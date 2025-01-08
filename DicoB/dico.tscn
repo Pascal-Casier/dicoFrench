@@ -1,0 +1,193 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5fqusjpqgu63"]
+
+[ext_resource type="Script" path="res://DicoB/dico.gd" id="1_ihpsk"]
+[ext_resource type="Theme" uid="uid://xvcu7wubj0hx" path="res://DicoB/DicoTheme.tres" id="1_q5iab"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0o5h"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color(1, 0.192157, 0.192157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2p4sm"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color(0.933333, 0.360784, 0.360784, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.411765, 0.368627, 0.368627, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kpj4"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color(0.0313726, 0.345098, 0.364706, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.411765, 0.368627, 0.368627, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jivdw"]
+bg_color = Color(0.0588235, 0.141176, 0.0117647, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.0666667, 0.0784314, 0.0666667, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 10
+shadow_offset = Vector2(5, 5)
+
+[node name="Dico" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_q5iab")
+script = ExtResource("1_ihpsk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/outline_size = 0
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_f0o5h")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_2p4sm")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_7kpj4")
+theme_override_styles/tab_focus = SubResource("StyleBoxFlat_2p4sm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jivdw")
+tab_alignment = 1
+current_tab = 1
+
+[node name="AddTab" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="FrenchInput" type="LineEdit" parent="MarginContainer/TabContainer/AddTab"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+placeholder_text = "mot français"
+caret_blink = true
+
+[node name="PortuguesInput" type="LineEdit" parent="MarginContainer/TabContainer/AddTab"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+placeholder_text = "traduction"
+caret_blink = true
+
+[node name="AddButton" type="Button" parent="MarginContainer/TabContainer/AddTab"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "ajouter mot"
+
+[node name="SearchTab" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="Control" type="Control" parent="MarginContainer/TabContainer/SearchTab"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/SearchTab"]
+layout_mode = 2
+text = "Entrez votre mot :        "
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Control3" type="Control" parent="MarginContainer/TabContainer/SearchTab"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/SearchTab"]
+layout_mode = 2
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="SearchInput" type="LineEdit" parent="MarginContainer/TabContainer/SearchTab/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+caret_blink = true
+
+[node name="ResultLabel" type="Label" parent="MarginContainer/TabContainer/SearchTab/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Control2" type="Control" parent="MarginContainer/TabContainer/SearchTab"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="ListTab" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="WordTree" type="Tree" parent="MarginContainer/TabContainer/ListTab"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="QuizzTab" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="WordLabel" type="Label" parent="MarginContainer/TabContainer/QuizzTab"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+horizontal_alignment = 1
+
+[node name="ButtonsContainer" type="GridContainer" parent="MarginContainer/TabContainer/QuizzTab"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 25
+columns = 2
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/TabContainer/QuizzTab"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[connection signal="text_submitted" from="MarginContainer/TabContainer/AddTab/PortuguesInput" to="." method="_on_add_button_pressed"]

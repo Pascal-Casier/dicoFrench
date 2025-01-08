@@ -1,0 +1,397 @@
+[gd_scene load_steps=14 format=3 uid="uid://cg6tcasj5umbn"]
+
+[ext_resource type="Theme" uid="uid://xvcu7wubj0hx" path="res://DicoB/DicoTheme.tres" id="1_aemn0"]
+[ext_resource type="Script" path="res://inventorySystem/Dico5.gd" id="2_o2fl0"]
+[ext_resource type="Texture2D" uid="uid://ccrhem04or2ok" path="res://inventorySystem/france.png" id="3_bi2qi"]
+[ext_resource type="Texture2D" uid="uid://coh6jepy564yg" path="res://inventorySystem/bresil.png" id="4_m8h1y"]
+
+[sub_resource type="SystemFont" id="SystemFont_no88j"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjm6p"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color(0.933333, 0.360784, 0.360784, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nswub"]
+bg_color = Color(0.0313726, 0.0392157, 0.176471, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_et1l5"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color(0.14902, 0.792157, 0.14902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_am43v"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color(0.148438, 0.791667, 0.148438, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.411765, 0.368627, 0.368627, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0b05u"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color(0.121569, 0.0588235, 0.396078, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.411765, 0.368627, 0.368627, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ey7o"]
+bg_color = Color(0.0784314, 0.682353, 0.133333, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.0666667, 0.0784314, 0.0666667, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 10
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6fbor"]
+bg_color = Color(0.0117647, 0.0352941, 0.180392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="SystemFont" id="SystemFont_qmma1"]
+font_names = PackedStringArray("Impact")
+
+[node name="Inventaire" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_aemn0")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_aemn0")
+theme_override_fonts/font = SubResource("SystemFont_no88j")
+theme_override_styles/tab_focus = SubResource("StyleBoxFlat_jjm6p")
+tab_alignment = 1
+current_tab = 3
+
+[node name="Pause" type="MarginContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Pause"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="BtnContinuer" type="Button" parent="MarginContainer/TabContainer/Pause/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Continuer"
+
+[node name="BtnSave" type="Button" parent="MarginContainer/TabContainer/Pause/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Sauver"
+
+[node name="BtnLoad" type="Button" parent="MarginContainer/TabContainer/Pause/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Charger"
+
+[node name="BtnQuit" type="Button" parent="MarginContainer/TabContainer/Pause/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Quitter"
+
+[node name="Options" type="MarginContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Inventaire" type="MarginContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/TabContainer/Inventaire"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 5
+
+[node name="Slot" type="Panel" parent="MarginContainer/TabContainer/Inventaire/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nswub")
+
+[node name="Slot2" type="Panel" parent="MarginContainer/TabContainer/Inventaire/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nswub")
+
+[node name="Slot3" type="Panel" parent="MarginContainer/TabContainer/Inventaire/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nswub")
+
+[node name="Slot4" type="Panel" parent="MarginContainer/TabContainer/Inventaire/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nswub")
+
+[node name="Slot5" type="Panel" parent="MarginContainer/TabContainer/Inventaire/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nswub")
+
+[node name="Slot6" type="Panel" parent="MarginContainer/TabContainer/Inventaire/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nswub")
+
+[node name="Slot7" type="Panel" parent="MarginContainer/TabContainer/Inventaire/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nswub")
+
+[node name="Slot8" type="Panel" parent="MarginContainer/TabContainer/Inventaire/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nswub")
+
+[node name="Slot9" type="Panel" parent="MarginContainer/TabContainer/Inventaire/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nswub")
+
+[node name="Slot10" type="Panel" parent="MarginContainer/TabContainer/Inventaire/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nswub")
+
+[node name="Slot11" type="Panel" parent="MarginContainer/TabContainer/Inventaire/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nswub")
+
+[node name="Slot12" type="Panel" parent="MarginContainer/TabContainer/Inventaire/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nswub")
+
+[node name="Slot13" type="Panel" parent="MarginContainer/TabContainer/Inventaire/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nswub")
+
+[node name="Slot14" type="Panel" parent="MarginContainer/TabContainer/Inventaire/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nswub")
+
+[node name="Slot15" type="Panel" parent="MarginContainer/TabContainer/Inventaire/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nswub")
+
+[node name="Dictionnaire" type="MarginContainer" parent="MarginContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("2_o2fl0")
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/TabContainer/Dictionnaire"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/side_margin = 8
+theme_override_constants/outline_size = 1
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_et1l5")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_am43v")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_0b05u")
+theme_override_styles/tab_focus = SubResource("StyleBoxFlat_am43v")
+theme_override_styles/panel = SubResource("StyleBoxFlat_0ey7o")
+tab_alignment = 1
+current_tab = 3
+
+[node name="Ajouter" type="VBoxContainer" parent="MarginContainer/TabContainer/Dictionnaire/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="FrenchInput" type="LineEdit" parent="MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+placeholder_text = "mot français"
+right_icon = ExtResource("3_bi2qi")
+caret_blink = true
+
+[node name="PortuguesInput" type="LineEdit" parent="MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+placeholder_text = "traduction"
+right_icon = ExtResource("4_m8h1y")
+caret_blink = true
+
+[node name="AddButton" type="Button" parent="MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "ajouter mot"
+
+[node name="Chercher" type="VBoxContainer" parent="MarginContainer/TabContainer/Dictionnaire/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="Control" type="Control" parent="MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher"]
+layout_mode = 2
+text = "Entrez votre mot :        "
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Control3" type="Control" parent="MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="SearchInput" type="LineEdit" parent="MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+caret_blink = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher/HBoxContainer"]
+custom_minimum_size = Vector2(300, 130)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_6fbor")
+horizontal_scroll_mode = 0
+
+[node name="ResultLabel" type="Label" parent="MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher/HBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.964706, 0.988235, 0.25098, 1)
+
+[node name="Control2" type="Control" parent="MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Liste" type="VBoxContainer" parent="MarginContainer/TabContainer/Dictionnaire/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="WordTree" type="Tree" parent="MarginContainer/TabContainer/Dictionnaire/TabContainer/Liste"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+columns = 3
+column_titles_visible = true
+select_mode = 1
+
+[node name="Quizz" type="VBoxContainer" parent="MarginContainer/TabContainer/Dictionnaire/TabContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="WordLabel" type="Label" parent="MarginContainer/TabContainer/Dictionnaire/TabContainer/Quizz"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("SystemFont_qmma1")
+horizontal_alignment = 1
+
+[node name="ButtonsContainer" type="GridContainer" parent="MarginContainer/TabContainer/Dictionnaire/TabContainer/Quizz"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 25
+columns = 2
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/TabContainer/Dictionnaire/TabContainer/Quizz"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="MarginContainer/TabContainer/Dictionnaire/TabContainer"]
+unique_name_in_owner = true
+
+[node name="Encyclopédie" type="MarginContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[connection signal="text_submitted" from="MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter/PortuguesInput" to="MarginContainer/TabContainer/Dictionnaire" method="_on_add_button_pressed"]
