@@ -404,5 +404,3 @@ unique_name_in_owner = true
 [node name="Encyclopédie" type="MarginContainer" parent="MarginContainer/TabContainer"]
 visible = false
 layout_mode = 2
-
-[connection signal="text_submitted" from="MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter/PortuguesInput" to="MarginContainer/TabContainer/Dictionnaire" method="_on_add_button_pressed"]

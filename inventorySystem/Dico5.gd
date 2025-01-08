@@ -130,11 +130,16 @@ func _on_new_category_button_pressed() -> void:
 	var vbox = VBoxContainer.new()
 	var input = LineEdit.new()
 	
+	vbox.custom_minimum_size = Vector2(350, 80)
+	vbox.position = Vector2(16, 8)
+	vbox.add_theme_constant_override("separation", 10)
 	dialog.add_child(vbox)
 	vbox.add_child(input)
+	input.custom_minimum_size = Vector2(300, 40)
 	input.placeholder_text = "Nom de la catégorie"
 	
 	dialog.title = "Nouvelle catégorie"
+	dialog.min_size = Vector2(400, 150)
 	dialog.confirmed.connect(func():
 		var category_name = input.text.strip_edges()
 		if not category_name.is_empty() and not dictionary.categories.has(category_name):
@@ -203,7 +208,7 @@ func _on_tree_button_clicked(item: TreeItem, _column: int, id: int, _mouse_butto
 	elif id == BUTTON_DELETE:
 		_show_delete_dialog(french_word)
 
-func _on_add_button_pressed(submitted_text: String = "") -> void:
+func _on_add_button_pressed(_submitted_text: String = "") -> void:
 	var french_word = french_input.text.strip_edges()
 	var portuguese_word = portuguese_input.text.strip_edges()
 	var selected_category = category_option.get_item_text(category_option.selected)
