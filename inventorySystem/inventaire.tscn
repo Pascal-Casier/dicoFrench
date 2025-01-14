@@ -290,13 +290,18 @@ layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="CategoryOption" type="OptionButton" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="CategoryOption" type="OptionButton" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 25)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="NewCategoryButton" type="Button" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter"]
+[node name="NewCategoryButton" type="Button" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
