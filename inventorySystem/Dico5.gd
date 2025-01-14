@@ -330,19 +330,39 @@ func _show_edit_dialog(french_word: String) -> void:
 		if not new_french.is_empty() and not new_portuguese.is_empty():
 			var old_category = dictionary.words[french_word].category
 			
-			if old_category != new_category:
-				dictionary.categories[old_category].erase(french_word)
-				if not dictionary.categories.has(new_category):
-					dictionary.categories[new_category] = []
-				dictionary.categories[new_category].append(new_french)
+			# Supprimer l'ancien mot de sa catégorie
+			dictionary.categories[old_category].erase(french_word)
 			
+			# Si le mot français change
 			if new_french != french_word:
 				var entry = dictionary.words[french_word].duplicate()
 				dictionary.words.erase(french_word)
 				dictionary.words[new_french] = entry
+				
+				# Ajouter le nouveau mot à la catégorie appropriée
+				if old_category == new_category:
+					dictionary.categories[new_category].append(new_french)
+			else:
+				# Si seul le portugais change, remettre le mot français dans la catégorie
+				dictionary.categories[old_category].append(french_word)
 			
-			dictionary.words[new_french].portuguese = new_portuguese
-			dictionary.words[new_french].category = new_category
+			# Si la catégorie change
+			if old_category != new_category:
+				# Supprimer de l'ancienne catégorie si nécessaire
+				if dictionary.categories[old_category].has(new_french):
+					dictionary.categories[old_category].erase(new_french)
+				if dictionary.categories[old_category].has(french_word):
+					dictionary.categories[old_category].erase(french_word)
+					
+				# Ajouter à la nouvelle catégorie
+				if not dictionary.categories.has(new_category):
+					dictionary.categories[new_category] = []
+				dictionary.categories[new_category].append(new_french)
+			
+			# Mettre à jour les données du mot
+			var target_word = new_french if new_french != french_word else french_word
+			dictionary.words[target_word].portuguese = new_portuguese
+			dictionary.words[target_word].category = new_category
 			
 			save_dictionary()
 			update_word_tree()
