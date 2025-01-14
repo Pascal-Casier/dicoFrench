@@ -1,5 +1,8 @@
 extends Control
 
+signal all_words_mastered
+
+
 # Constantes
 const SAVE_PATH = "user://dictionary.json"
 const MIN_QUIZ_OPTIONS = 4
@@ -7,12 +10,16 @@ const BUTTON_MIN_SIZE = Vector2(200, 50)
 const BUTTON_EDIT = 0
 const BUTTON_DELETE = 1
 const DEFAULT_CATEGORY = "Non classé"
+const CORRECT_SOUND_EFFECT = preload("res://inventorySystem/Correct sound effect.mp3")
+const WRONG_SOUND_EFFECT = preload("res://inventorySystem/wrong sound effect (mp3cut.net).mp3")
 
 # Nouvelles constantes pour la priorité
 const MAX_MASTERY_LEVEL = 5
 const MASTERY_WEIGHT = 2.0
 const TIME_WEIGHT = 1.0
 const DAY_IN_SECONDS = 86400
+
+var has_emitted_mastery_signal = false
 
 # Références aux nœuds
 @onready var french_input: LineEdit = %FrenchInput
@@ -27,6 +34,8 @@ const DAY_IN_SECONDS = 86400
 @onready var quiz_buttons_container: GridContainer = %ButtonsContainer
 @onready var category_option: OptionButton = %CategoryOption
 @onready var new_category_button: Button = %NewCategoryButton
+@onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
+@onready var confirmation_dialog: ConfirmationDialog = %ConfirmationDialog
 
 # Variables pour le quiz
 var quiz_state = {
@@ -459,14 +468,22 @@ func _on_answer_button_pressed(answer: String) -> void:
 		quiz_state.score += 1
 		quiz_state.streak += 1
 		word_data.mastery_level = mini(word_data.mastery_level + 1, MAX_MASTERY_LEVEL)
+		audio_stream_player.stream = CORRECT_SOUND_EFFECT
+		audio_stream_player.play()
 	else:
 		quiz_state.streak = 0
 		word_data.mastery_level = maxi(word_data.mastery_level - 1, 0)
+		audio_stream_player.stream = WRONG_SOUND_EFFECT
+		audio_stream_player.play()
 	
 	word_data.last_reviewed = Time.get_unix_time_from_system()
 	update_score_display()
 	save_dictionary()
+	check_all_words_mastery()
 	next_quiz_question()
+
+func reset_mastery_signal() -> void:
+	has_emitted_mastery_signal = false
 
 func update_score_display() -> void:
 	quiz_state.total_words = dictionary.words.size()
@@ -476,6 +493,24 @@ func update_score_display() -> void:
 		quiz_state.streak,
 		quiz_state.total_words
 	]
+
+func check_all_words_mastery() -> void:
+	if dictionary.words.is_empty() or has_emitted_mastery_signal:
+		return
+		
+	var all_mastered = true
+	for word in dictionary.words.values():
+		if word.mastery_level < MAX_MASTERY_LEVEL:
+			all_mastered = false
+			break
+	
+	if all_mastered:
+		has_emitted_mastery_signal = true
+		emit_signal("all_words_mastered")
+		confirmation_dialog.show()
+		reset_mastery_signal()
+
+
 
 func _on_tab_selected(tab_index: int) -> void:
 	save_dictionary()

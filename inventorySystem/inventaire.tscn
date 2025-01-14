@@ -284,8 +284,10 @@ theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_0b05u")
 theme_override_styles/tab_focus = SubResource("StyleBoxFlat_am43v")
 theme_override_styles/panel = SubResource("StyleBoxFlat_0ey7o")
 tab_alignment = 1
+current_tab = 3
 
 [node name="Ajouter" type="VBoxContainer" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
@@ -395,7 +397,6 @@ column_titles_visible = true
 select_mode = 1
 
 [node name="Quizz" type="VBoxContainer" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
@@ -405,7 +406,10 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.0156863, 0.0156863, 0.235294, 1)
+theme_override_colors/font_outline_color = Color(0.00392157, 0.0784314, 0.345098, 1)
 theme_override_fonts/font = SubResource("SystemFont_qmma1")
+theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 
 [node name="ButtonsContainer" type="GridContainer" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Quizz"]
@@ -423,8 +427,21 @@ custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Quizz"]
+unique_name_in_owner = true
+volume_db = -18.0
+
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer"]
 unique_name_in_owner = true
+title = "Merci de confirmer ..."
+initial_position = 2
+size = Vector2i(500, 300)
+unresizable = true
+borderless = true
+always_on_top = true
+transparent = true
+dialog_text = "Vous avez maitrisé tous les mots !!
+Félicitations"
 
 [node name="Encyclopédie" type="MarginContainer" parent="Control/MarginContainer/TabContainer"]
 visible = false
