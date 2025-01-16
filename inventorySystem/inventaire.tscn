@@ -41,6 +41,8 @@ border_width_right = 2
 border_width_bottom = 2
 corner_radius_top_left = 6
 corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_am43v"]
 content_margin_left = 16.0
@@ -53,6 +55,8 @@ border_width_bottom = 1
 border_color = Color(0.411765, 0.368627, 0.368627, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0b05u"]
 content_margin_left = 16.0
@@ -62,9 +66,11 @@ border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.411765, 0.368627, 0.368627, 1)
+border_color = Color(0.141176, 0.0862745, 0.0901961, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ey7o"]
 bg_color = Color(0.0784314, 0.682353, 0.133333, 1)
@@ -276,8 +282,6 @@ script = ExtResource("2_o2fl0")
 [node name="TabContainer" type="TabContainer" parent="Control/MarginContainer/TabContainer/Dictionnaire"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/side_margin = 8
-theme_override_constants/outline_size = 1
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_et1l5")
 theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_am43v")
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_0b05u")
@@ -286,30 +290,30 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0ey7o")
 tab_alignment = 1
 current_tab = 3
 
-[node name="Ajouter" type="VBoxContainer" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer"]
+[node name="Ajouter des mots" type="VBoxContainer" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer"]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter des mots"]
 layout_mode = 2
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="CategoryOption" type="OptionButton" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter/HBoxContainer"]
+[node name="CategoryOption" type="OptionButton" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter des mots/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 25)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="NewCategoryButton" type="Button" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter/HBoxContainer"]
+[node name="NewCategoryButton" type="Button" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter des mots/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "nouvelle catégorie"
 
-[node name="FrenchInput" type="LineEdit" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter"]
+[node name="FrenchInput" type="LineEdit" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter des mots"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
@@ -318,7 +322,7 @@ placeholder_text = "mot français"
 right_icon = ExtResource("3_bi2qi")
 caret_blink = true
 
-[node name="PortuguesInput" type="LineEdit" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter"]
+[node name="PortuguesInput" type="LineEdit" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter des mots"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
@@ -327,38 +331,38 @@ placeholder_text = "traduction"
 right_icon = ExtResource("4_m8h1y")
 caret_blink = true
 
-[node name="AddButton" type="Button" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter"]
+[node name="AddButton" type="Button" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Ajouter des mots"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "ajouter mot"
 
-[node name="Chercher" type="VBoxContainer" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer"]
+[node name="Chercher un mot" type="VBoxContainer" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer"]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 11
 
-[node name="Control" type="Control" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher"]
+[node name="Control" type="Control" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher un mot"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher"]
+[node name="Label" type="Label" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher un mot"]
 layout_mode = 2
 text = "Entrez votre mot :        "
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Control3" type="Control" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher"]
+[node name="Control3" type="Control" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher un mot"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher un mot"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 45
 alignment = 1
 
-[node name="SearchInput" type="LineEdit" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher/HBoxContainer"]
+[node name="SearchInput" type="LineEdit" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher un mot/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
@@ -366,21 +370,21 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 caret_blink = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher/HBoxContainer"]
-custom_minimum_size = Vector2(300, 130)
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher un mot/HBoxContainer"]
+custom_minimum_size = Vector2(300, 168)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_6fbor")
 horizontal_scroll_mode = 0
 
-[node name="ResultLabel" type="Label" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher/HBoxContainer/ScrollContainer"]
+[node name="ResultLabel" type="Label" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher un mot/HBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.964706, 0.988235, 0.25098, 1)
 
-[node name="Control2" type="Control" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher"]
+[node name="Control2" type="Control" parent="Control/MarginContainer/TabContainer/Dictionnaire/TabContainer/Chercher un mot"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
